@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { TaskService } from '../task.service'
+import { Task } from '../task.model'
 
 @Component({
   selector: 'app-task-list',
@@ -7,4 +9,11 @@ import { Component } from '@angular/core';
 })
 export class TaskListComponent {
   a = "Kailash Tuta"
+  tasks: Task[] = [];
+  constructor(private taskService:TaskService){
+    
+  }
+  ngOnInit():void{
+    this.tasks = this.taskService.getTasks();
+  }
 }
